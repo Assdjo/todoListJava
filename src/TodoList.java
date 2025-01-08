@@ -8,16 +8,29 @@ public class TodoList {
     }
 
     public void addTask(Task task) {
+
         tasks[taskCount] = task;
         taskCount++;
     }
 
+    public void editTask(int index, String name, String description) {
+        tasks[index-1].setName(name);
+        tasks[index-1].setDescription(description);
+    }
+
+    public void deleteTask(int index) {
+        for (int i = index-1; i < taskCount - 1; i++) {
+            tasks[i] = tasks[i + 1];
+        }
+        taskCount--;
+    }
+
     public void markTaskAsDone(int index) {
-        tasks[index].markAsDone();
+        tasks[index - 1].markAsDone();
     }
 
     public void markTaskAsUndone(int index) {
-        tasks[index].markAsUndone();
+        tasks[index - 1].markAsUndone();
     }
 
     public void printTasks() {
